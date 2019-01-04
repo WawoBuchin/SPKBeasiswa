@@ -19,10 +19,11 @@
         <activity android:name=".Jurusan.JurusanMain" />
         <activity android:name=".Jurusan.InsertJurusan" />
         <activity android:name=".Jurusan.UpdateJurusan" />
-        <activity android:name=".Mahasiswa.MahasiswaMain"></activity>
-        <activity android:name=".Mahasiswa.InsertMahasiswa"></activity>
+        <activity android:name=".Mahasiswa.MahasiswaMain" />
+        <activity android:name=".Mahasiswa.InsertMahasiswa" />
         <activity android:name=".Mahasiswa.UpdateMahasiswa" />
-        <activity android:name=".Fuzzy.FuzzyMain"></activity>
+        <activity android:name=".Fuzzy.FuzzyMain" />
+        <activity android:name=".Laporan.LaporanBeasiswa"></activity>
     </application>
 
 </manifest>

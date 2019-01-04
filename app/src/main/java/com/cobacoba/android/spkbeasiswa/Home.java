@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.cobacoba.android.spkbeasiswa.Fuzzy.FuzzyMain;
 import com.cobacoba.android.spkbeasiswa.Jurusan.JurusanMain;
+import com.cobacoba.android.spkbeasiswa.Laporan.LaporanBeasiswa;
 import com.cobacoba.android.spkbeasiswa.Mahasiswa.MahasiswaMain;
 
 
@@ -37,6 +39,14 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             case R.id.buttonmhs:
                 Intent intent1 = new Intent(this, MahasiswaMain.class);
                 startActivity(intent1);
+                break;
+            case R.id.buttonhit:
+                Intent intent2 = new Intent(this, FuzzyMain.class);
+                startActivity(intent2);
+                break;
+            case R.id.buttonlap:
+                Intent intent3 = new Intent(this, LaporanBeasiswa.class);
+                startActivity(intent3);
                 break;
         }
     }

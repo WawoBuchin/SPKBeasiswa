@@ -62,10 +62,12 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_TANG_FUZZY = "tanggungan";
     private static final String COL_IPK_FUZZY = "ipk";
     private static final String COL_SKOR_FUZZY = "skor";
+    private static final String COL_STATUS_FUZZY = "status";
 
     private static final String CREATE_TABLE_FUZZY = "CREATE TABLE " + TABLE_FUZZY + " ("
-            + COL_ID_FUZZY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NAMA_FUZZY + " TEXT,"
-            + COL_UANG_FUZZY + "TEXT, " + COL_TANG_FUZZY + "TEXT, " + COL_SKOR_FUZZY + "TEXT)";
+            + COL_ID_FUZZY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NAMA_FUZZY + " TEXT, "
+            + COL_UANG_FUZZY + " TEXT, " + COL_TANG_FUZZY + " TEXT, " + COL_IPK_FUZZY + " TEXT, "
+            + COL_SKOR_FUZZY + " TEXT," + COL_STATUS_FUZZY + " TEXT )";
 
 
 
@@ -254,11 +256,13 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COL_ID_FUZZY, fuz.getId_fuzzy());
+        //values.put(COL_ID_FUZZY, fuz.getId_fuzzy());
         values.put(COL_NAMA_FUZZY, fuz.getNama_fuzzy());
         values.put(COL_UANG_FUZZY, fuz.getUang_fuzzy());
         values.put(COL_TANG_FUZZY, fuz.getTang_fuzzy());
+        values.put(COL_IPK_FUZZY, fuz.getIpk_fuzzy());
         values.put(COL_SKOR_FUZZY, fuz.getSkor_fuzzy());
+        values.put(COL_STATUS_FUZZY, fuz.getStatus_fuzzy());
 
 
         // insert row
@@ -279,7 +283,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
             cursor.moveToFirst();
             do{
-                listFuzzy.add(new FuzzyModel(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4)));
+                listFuzzy.add(new FuzzyModel(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
             }while(cursor.moveToNext());
         }
         return listFuzzy;
@@ -298,7 +302,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_NAMA_FUZZY, fuz.getNama_fuzzy());
         values.put(COL_UANG_FUZZY, fuz.getUang_fuzzy());
         values.put(COL_TANG_FUZZY, fuz.getTang_fuzzy());
-        values.put(COL_SKOR_FUZZY, fuz.getSkor_fuzzy());
+        //values.put(COL_SKOR_FUZZY, fuz.getSkor_fuzzy());
+        values.put(COL_STATUS_FUZZY, fuz.getTang_fuzzy());
 
         db.update(TABLE_FUZZY, values,"id = ?" , new String[]{String.valueOf(fuz.getId_fuzzy())});
         db.close();
@@ -306,9 +311,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public FuzzyModel getDataFuzzy(String id){
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM " + TABLE_FUZZY + " WHERE " + COL_ID_FUZZY + " = " + id ;
+        //String sql1 = "select nim,nama,jurusan,semester,status from tb_mahasiswa,tb_jurusan,tb_fuzzy " +
+                //"where tb_mahasiswa.nama = tb_fuzzy.nama and tb_mahasiswa.jurusan = tb_jurusan.jurusan ";
+        String sql = "SELECT * FROM " + TABLE_FUZZY ;
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
-        return new FuzzyModel(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4));
+        return new FuzzyModel(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
     }
 }
