@@ -20,8 +20,7 @@ public class LaporanBeasiswa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laporan_beasiswa);
 
-        dbHelper = new DBHelper(context, null);
-        rv = findViewById(R.id.listMahasiswa);
+        rv = findViewById(R.id.listLaporan);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
